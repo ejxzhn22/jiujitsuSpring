@@ -9,4 +9,9 @@
 		insert into member(mb_id, mb_pw, mb_name)
 		values(#{mb_id},#{mb_pw},#{mb_name})
 	</insert>
+	
+	<!-- 아이디 찾기 -->
+	<select id="searchById" parameterType="String" resultType="Member">
+		select * from member where mb_id=#{mb_id}
+	</select>
 </mapper>

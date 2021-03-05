@@ -21,10 +21,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.sujin.spring.service.MemberService;
+import com.sujin.spring.vo.Member;
 
 @Controller
 public class LoginController {
-	
+	@Inject
+	private MemberService memberService;
 	private KakaoLoginApi kakaoLoginApi;
 	private NaverLoginBO naverLoginBO;
 	private String apiResult = null;
@@ -58,6 +61,21 @@ public class LoginController {
         /* 생성한 인증 URL을 View로 전달 */
         return "login";
     }
+    
+    //기본 로그인
+    @RequestMapping(value="/commonlogin", method=RequestMethod.POST)
+    public String login(Model model, Member member, HttpSession session) {
+    	Boolean bl = memberService.login(member);
+    	
+    	if( bl == true) {
+    		session.setAttribute("sessionId", member.getMb_id());
+    		
+    		return "redirect:/";
+    	}else {
+    		model.addAttribute("msg", "비밀번호 다름");
+			return "alert";
+    	}
+    }
  
     //네이버 로그인 성공시 callback호출 메소드
     @RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
@@ -82,9 +100,15 @@ public class LoginController {
         JSONObject response_obj = (JSONObject)jsonObj.get("response");
         //response의 nickname값 파싱
         String name = (String)response_obj.get("name");
+        String id = (String)response_obj.get("id");
+        String email = (String)response_obj.get("email");
+        String nickname = (String)response_obj.get("nickname");
         System.out.println(name);
         //4.파싱 닉네임 세션으로 저장
-        session.setAttribute("sessionId",name); //세션 생성
+        session.setAttribute("sessionId",id); //세션 생성
+        session.setAttribute("sessionName",name);
+        session.setAttribute("sessionEmail",email);
+        session.setAttribute("sessionNickname",nickname);
         model.addAttribute("result", apiResult);
 
         /* 네이버 로그인 성공 페이지 View 호출 */

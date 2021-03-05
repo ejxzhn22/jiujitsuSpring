@@ -6,4 +6,10 @@ public interface MemberService {
 
 	//회원가입
 	public int join(Member member);
+	
+	//아이디 중복 확인
+	public Boolean duplicateById(String mb_id);
+	
+	//로그인
+	public Boolean login(Member member);
 }

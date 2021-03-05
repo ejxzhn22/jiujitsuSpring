@@ -13,6 +13,8 @@
 	<typeAliases>		
 	
 		<typeAlias alias="Member" type="com.sujin.spring.vo.Member" />
+		<typeAlias alias="Board" type="com.sujin.spring.vo.Board" />
+		<typeAlias alias="Answer" type="com.sujin.spring.vo.Answer" />
 <!-- 
 		<typeAlias alias="Book" type="com.bokm.vo.Book" />
 		<typeAlias alias="Member" type="com.bokm.vo.Member" />

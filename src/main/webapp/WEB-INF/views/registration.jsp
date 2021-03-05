@@ -44,12 +44,13 @@
 				<div class="col-lg-6">
 					<div class="login_form_inner reg_form">
 						<h3>Create an Account</h3>
-						<form class="row login_form" action="join" method="post" id="contactForm" novalidate="novalidate">
+						<form class="row login_form" action="join" method="post" id="contactForm" name="joinform" novalidate="novalidate">
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="mb_name" name="mb_name" placeholder="Name">
 							</div>
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="mb_id" name="mb_id" placeholder="Id">
+								<input type="submit" value="중복확인" class="genric-btn info-border" formaction="/duplicateById">
 							</div>
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="mb_pw" name="mb_pw" placeholder="Password">
@@ -59,7 +60,7 @@
 							</div>
 							
 							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="btn submit_btn">Register</button>
+								<button type="submit" value="submit"  class="btn submit_btn">Register</button>
 							</div>
 						</form>
 					</div>
@@ -74,5 +75,13 @@
 	<!--================ End footer Area  =================-->
 
 </body>
+
+<script>
+	function duplicateById(){
+		const form = document.joinform;
+		
+		form.submit();
+	}
+</script>
 
 </html>

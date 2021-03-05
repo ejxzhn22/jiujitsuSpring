@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.main{
+	text-align: center;
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.textBox{
+	
+	border: 1px solid #d3c0d3;
+	margin-bottom: 10px;
+}
+
+.mainText{
+	height: 300px;
+	padding: 30px;
+	
+}
+
+.modal-text{
+	border: 0.5px solid #d3c0d3;
+}

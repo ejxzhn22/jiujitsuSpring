@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sujin.spring.adminMapper">
+
+
+	<!-- 회원정보 가져오기  -->
+	<select id="findMember" resultType="Member">
+		select mb_no, mb_id ,mb_name from Member where mb_del=0
+	</select>
+
+	<!-- 회원탈퇴 -->
+	<update id="deleteMember" parameterType="int">
+		update member set mb_del=1 where mb_no=#{mb_no}
+	</update>
+</mapper>

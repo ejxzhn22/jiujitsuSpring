@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sujin.spring.boardMapper">
+
+	<!-- 공지사항 글쓰기 -->
+	<insert id="boardNoticeWrite" parameterType="Board">
+		insert into board(b_title, b_content, b_writer, b_date, b_kategorie)
+		values (#{b_title}, #{b_content}, #{b_writer}, now(), 1)
+	</insert>
+	
+	<!-- 공지사항 글 가져오기 -->
+	<select id="selectNoticeBoard" resultType="Board">
+		select * from board where b_del=0 and b_kategorie = 1 order by b_date DESC
+	</select>
+	
+	<!-- qna 글쓰기 -->
+	<insert id="boardQnaWrite" parameterType="Board">
+		insert into board(b_title, b_content, b_writer, b_date, b_del,b_kategorie)
+		values (#{b_title}, #{b_content}, #{b_writer}, now(), 0, 2)
+	</insert>
+	
+	<!-- qna 글 가져오기 -->
+	<select id="selectQnaBoard" resultType="Board">
+		select * from board where b_del=0 and b_kategorie=2 order by b_date DESC 
+	</select>
+	
+	<!-- qna b_no으로 글가져오기 -->
+	<select id="qnaDetail" parameterType="int" resultType="Board">
+		select * from board where b_no=#{b_no} 
+	</select>
+	
+	<!-- 게시판 글 수정하기 -->
+	<update id="updateBoard" parameterType="Board">
+		update board set b_title=#{b_title}, b_content=#{b_content} where b_no = #{b_no}
+	</update>
+	
+	<!-- delete -->
+	<delete id="deleteBoard">
+		delete from board where b_no=#{b_no}
+	</delete>
+	
+	<!-- qna 답변하기  -->
+	<insert id="answer" parameterType="Answer">
+		insert into answer (answer_no, answer_content, answer_date) values(#{answer_no}, #{answer_content}, now())
+	</insert>
+	
+	<!-- board에 답변 있음 update -->
+	<update id="updateAnswer" parameterType="int">
+		update board set b_answer = 1 where b_no = #{b_no}
+	</update>
+	
+	<!-- answer 가져오기 -->
+	<select id="checkAnswer" resultType="Answer" parameterType="int">
+		select*from answer where answer_no = #{answer_no}
+	</select>
+</mapper>
