@@ -79,158 +79,19 @@
 						</div>
 					</div>
 					<div class="latest_product_inner row">
+					<c:forEach var="item" items="${list}">
 						<div class="col-lg-3 col-md-3 col-sm-6">
 							<div class="f_p_item">
 								<div class="f_p_img">
-									<img class="img-fluid" src="img/product/feature-product/f-p-1.jpg" alt="">
-									<div class="p_icon">
-										<a href="#">
-											<i class="lnr lnr-heart"></i>
-										</a>
-										<a href="#">
-											<i class="lnr lnr-cart"></i>
-										</a>
-									</div>
+									<img class="img-fluid" src="${path}/resources/images/${item.item_image}" alt="">
 								</div>
-								<a href="#">
-									<h4>Long Sleeve TShirt</h4>
+								<a href="/itemDetail?item_id=${item.item_id}">
+									<h4>${item.item_name}</h4>
 								</a>
-								<h5>$150.00</h5>
+								<h5>&#8361;${item.item_price}</h5>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6">
-							<div class="f_p_item">
-								<div class="f_p_img">
-									<img class="img-fluid" src="img/product/feature-product/f-p-2.jpg" alt="">
-									<div class="p_icon">
-										<a href="#">
-											<i class="lnr lnr-heart"></i>
-										</a>
-										<a href="#">
-											<i class="lnr lnr-cart"></i>
-										</a>
-									</div>
-								</div>
-								<a href="#">
-									<h4>Long Sleeve TShirt</h4>
-								</a>
-								<h5>$150.00</h5>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6">
-							<div class="f_p_item">
-								<div class="f_p_img">
-									<img class="img-fluid" src="img/product/feature-product/f-p-3.jpg" alt="">
-									<div class="p_icon">
-										<a href="#">
-											<i class="lnr lnr-heart"></i>
-										</a>
-										<a href="#">
-											<i class="lnr lnr-cart"></i>
-										</a>
-									</div>
-								</div>
-								<a href="#">
-									<h4>Long Sleeve TShirt</h4>
-								</a>
-								<h5>$150.00</h5>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6">
-							<div class="f_p_item">
-								<div class="f_p_img">
-									<img class="img-fluid" src="img/product/feature-product/f-p-4.jpg" alt="">
-									<div class="p_icon">
-										<a href="#">
-											<i class="lnr lnr-heart"></i>
-										</a>
-										<a href="#">
-											<i class="lnr lnr-cart"></i>
-										</a>
-									</div>
-								</div>
-								<a href="#">
-									<h4>Long Sleeve TShirt</h4>
-								</a>
-								<h5>$150.00</h5>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6">
-							<div class="f_p_item">
-								<div class="f_p_img">
-									<img class="img-fluid" src="img/product/feature-product/f-p-5.jpg" alt="">
-									<div class="p_icon">
-										<a href="#">
-											<i class="lnr lnr-heart"></i>
-										</a>
-										<a href="#">
-											<i class="lnr lnr-cart"></i>
-										</a>
-									</div>
-								</div>
-								<a href="#">
-									<h4>Long Sleeve TShirt</h4>
-								</a>
-								<h5>$150.00</h5>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6">
-							<div class="f_p_item">
-								<div class="f_p_img">
-									<img class="img-fluid" src="img/product/feature-product/f-p-4.jpg" alt="">
-									<div class="p_icon">
-										<a href="#">
-											<i class="lnr lnr-heart"></i>
-										</a>
-										<a href="#">
-											<i class="lnr lnr-cart"></i>
-										</a>
-									</div>
-								</div>
-								<a href="#">
-									<h4>Long Sleeve TShirt</h4>
-								</a>
-								<h5>$150.00</h5>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6">
-							<div class="f_p_item">
-								<div class="f_p_img">
-									<img class="img-fluid" src="img/product/feature-product/f-p-3.jpg" alt="">
-									<div class="p_icon">
-										<a href="#">
-											<i class="lnr lnr-heart"></i>
-										</a>
-										<a href="#">
-											<i class="lnr lnr-cart"></i>
-										</a>
-									</div>
-								</div>
-								<a href="#">
-									<h4>Long Sleeve TShirt</h4>
-								</a>
-								<h5>$150.00</h5>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6">
-							<div class="f_p_item">
-								<div class="f_p_img">
-									<img class="img-fluid" src="img/product/feature-product/f-p-4.jpg" alt="">
-									<div class="p_icon">
-										<a href="#">
-											<i class="lnr lnr-heart"></i>
-										</a>
-										<a href="#">
-											<i class="lnr lnr-cart"></i>
-										</a>
-									</div>
-								</div>
-								<a href="#">
-									<h4>Long Sleeve TShirt</h4>
-								</a>
-								<h5>$150.00</h5>
-							</div>
-						</div>
+						</c:forEach>
 					</div>
 				</div>
 				<div class="col-lg-3">

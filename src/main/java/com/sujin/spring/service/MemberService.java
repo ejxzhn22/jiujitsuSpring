@@ -12,4 +12,7 @@ public interface MemberService {
 	
 	//로그인
 	public Boolean login(Member member);
+	
+	//아이디로 회원정보가져오기
+	public Member searchMember(String mb_id);
 }

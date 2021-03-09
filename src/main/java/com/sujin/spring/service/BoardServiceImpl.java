@@ -19,8 +19,7 @@ public class BoardServiceImpl implements BoardService{
 	//공지사항 글쓰기
 	@Override
 	public int boardNoticeWrite(Board board) {
-		// TODO Auto-generated method stub
-		return 0;
+		return boardDAO.boardNoticeWrite(board);
 	}
 
 	//qna 글쓰기
@@ -33,8 +32,7 @@ public class BoardServiceImpl implements BoardService{
 	//공지사항 전체 가져오기
 	@Override
 	public List<Board> selectNoticeBoard() {
-		// TODO Auto-generated method stub
-		return null;
+		return boardDAO.selectNoticeBoard();
 	}
 
 	//qna 전체 가져오기 

@@ -19,7 +19,7 @@
 					<h2>Elements</h2>
 					<div class="page_link">
 						<a href="index.html">Home</a>
-						<a href="elements.html">board_write</a>
+						<a href="elements.html">addItem</a>
 					</div>
 				</div>
 			</div>
@@ -32,28 +32,30 @@
        		<div class="section-top-border">
        			<div class="row" >
 					<div class="col-lg-8 col-md-8" style="text-align: center; margin:0 auto;">
-       					<h3 style="margin-bottom:20px;">글작성</h3>
-       					
-       					<c:choose>
-       						<c:when test="${sessionId eq 'root' }">
-								<form method = "post" action="/boardNoticeWrite">
-							</c:when>
-							<c:when test="${sessionId ne 'root' }">
-								<form method = "post" action="/boardQnaWrite">
-							</c:when>
-						</c:choose>
+       					<h3 style="margin-bottom:20px;">상품 등록</h3>
+						<form method = "post"  enctype="multipart/form-data">
 							<div class="mt-10">
-								<input type="text" name="b_title" placeholder="title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Title'"
+								<input type="text" name="item_name" placeholder="item_name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Item Name'"
 						 		required class="single-input">
 							</div>
 							<div class="mt-10">
-								<textarea class="single-textarea" name="b_content" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'"
+						         <!--  파일첨부 -->
+					             <input type="file" name="ufile"/>
+						     </div>
+							<div class="mt-10">
+								<textarea class="single-textarea" name="item_content" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Item Message'"
 						 		required></textarea>
 							</div>
 							<div>
-								<input type="text" class="single-input" name="b_writer" value="${sessionId }" readonly="readonly"/>
+								<input type="text" class="single-input" name="item_price" placeholder="price" />
 							</div>
-							<input type="submit" value="작성완료" class="genric-btn info circle" style="margin-top:20px;"/>
+							<div>
+								<input type="text" class="single-input" name="item_stockQuantity" placeholder="quantity" />
+							</div>
+							<div>
+								<input type="text" class="single-input" name="item_size" placeholder="size" />
+							</div>
+							<input type="submit" value="상품등록" class="genric-btn info circle" style="margin-top:20px;"/>
 						</form>
 					</div>
 				</div>

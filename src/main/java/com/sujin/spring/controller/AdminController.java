@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sujin.spring.service.AdminService;
 import com.sujin.spring.service.BoardService;
+import com.sujin.spring.service.OrderService;
+import com.sujin.spring.vo.Item;
 import com.sujin.spring.vo.Member;
 
 @Controller
@@ -20,6 +22,8 @@ public class AdminController {
 	
 	@Inject
 	private AdminService adminService;
+	@Inject
+	private OrderService orderService;
 	
 	@RequestMapping(value="/admin", method=RequestMethod.GET)
 	public String admin() {
@@ -42,5 +46,16 @@ public class AdminController {
 		adminService.deleteMember(mb_no);
 		
 		return "redirect:/admin/memberList";
+	}
+	
+	//상품관리로 이동
+	@RequestMapping(value="/itemList", method = RequestMethod.GET)
+	public String itemList(Model model) {
+		
+		List<Item> list = orderService.findItem();
+		System.out.println("리스트: " + list.toString());
+		model.addAttribute("list", list);
+		
+		return "itemList";
 	}
 }

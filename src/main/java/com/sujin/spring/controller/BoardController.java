@@ -23,7 +23,11 @@ public class BoardController {
 	
 	//공지사항 게시판
 	@RequestMapping(value="/board_notice", method=RequestMethod.GET)
-	public String board_notice() {
+	public String board_notice(Model model) {
+		
+		List<Board> list = boardService.selectNoticeBoard();
+		model.addAttribute("noticeList", list);
+		
 		return "board_notice";
 	}
 	
@@ -36,7 +40,7 @@ public class BoardController {
 		return "board_qna";
 	}
 	
-	//글쓰기 
+	//글쓰기로 이동
 	@RequestMapping(value="/boardQnaWrite", method=RequestMethod.GET)
 	public String boardQnaWrite() {
 		return "board_write";
@@ -48,6 +52,14 @@ public class BoardController {
 		
 		boardService.boardQnaWrite(board);
 		return "redirect:board_qna";
+	}
+	
+	//notice 글쓰기 
+	@RequestMapping(value="/boardNoticeWrite", method=RequestMethod.POST)
+	public String boardNoticeWrite(Board board) {
+		
+		boardService.boardNoticeWrite(board);
+		return "redirect:board_notice";
 	}
 	
 	//qna 글 상세 페이지

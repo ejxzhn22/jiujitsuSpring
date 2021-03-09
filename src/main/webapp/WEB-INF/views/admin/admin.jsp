@@ -27,7 +27,7 @@
     <section class="blog_area single-post-area p_120">
    		<div class="container">
         	<a href="/admin/memberList" class="genric-btn primary-border radius" >회원관리</a>
-        	<a href="#" class="genric-btn success-border radius">상품관리</a>
+        	<a href="/itemList" class="genric-btn success-border radius">상품관리</a>
         	<a href="/board_notice" class="genric-btn info-border radius">공지사항 관리</a>
         	<a href="/board_qna" class="genric-btn danger-border radius">Q&A 답변</a>
 			

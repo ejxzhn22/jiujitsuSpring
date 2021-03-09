@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sujin.spring.orderMapper">
+<!-- item_id int AI PK 
+item_name varchar(45) 
+item_price int 
+itme_size varchar(45) 
+item_stockQuantity int 
+item_content varchar(500) 
+item_image varchar(500)
+ -->
+ 
+ 	<!-- 상품등록 -->
+	<insert id="addItem" parameterType="Item">
+		insert into item(item_name, item_price, item_size,item_stockQuantity, item_content, item_image)
+		values (#{item_name}, #{item_price}, #{item_size}, #{item_stockQuantity} , #{item_content}, #{item_image})
+	</insert>
+	
+	<!-- 상품 가져오기 -->
+	<select id="findItem" resultType="Item">
+		select item_id,item_name, item_price, item_size, item_stockQuantity, item_content, item_image from Item
+	</select>
+	
+	<!-- id로 상품가져오기 -->
+	<select id="findItemById" parameterType="int" resultType="Item">
+		select item_id,item_name, item_price, item_size, item_stockQuantity, item_content, item_image 
+		from Item
+		where item_id=#{item_id}
+	</select>
+	
+	<!-- 상품 수정하기 -->
+	<update id="updateItem" parameterType="Item">
+		update item set item_name = #{item_name}, item_price=#{item_price}, item_size=#{item_size}, item_stockQuantity=#{item_stockQuantity},
+		item_content=#{item_content}, item_image=#{item_image}
+		where item_id = #{item_id}
+	</update>
+	
+	<!-- 상품 삭제하기 -->
+	<delete id="deleteItem" parameterType="int">
+		delete from item where item_id = #{item_id}
+	</delete>
+	
+	<!-- 장바구니 담기 -->
+	<insert id="addCart" parameterType="Cartitem">
+		insert into cartitem(cartitem_member_id, cartitem_item_id, cartitem_price, cartitem_count)
+		values (#{cartitem_member_id}, #{cartitem_item_id}, #{cartitem_price}, #{cartitem_count})
+	</insert>
+	
+	<!-- 장바구니 아이템가져오기 -->
+	<select id="selectCart" parameterType="int" resultType="Map">
+		select cartitem.cartitem_id,cartitem.cartitem_member_id, cartitem.cartitem_price, cartitem.cartitem_count, item.item_name, item.item_image
+		from cartitem
+		join item
+		on cartitem.cartitem_item_id = item.item_id
+		where cartitem.cartitem_member_id = #{cartitem_member_id}
+	</select>
+
+</mapper>

@@ -28,4 +28,8 @@
 	<beans:bean id="naverLoginBO" class="com.sujin.spring.controller.NaverLoginBO" />
 	<beans:bean id="kakaoLoginApi" class="com.sujin.spring.controller.KakaoLoginApi" />
 	
+	<beans:bean id="multipartResolver"
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <beans:property name="maxUploadSize" value="10000000" />
+	</beans:bean>
 </beans:beans>

@@ -94,22 +94,9 @@
 									<li class="nav-item active">
 										<a class="nav-link" href="/">Home</a>
 									</li>
-									<li class="nav-item submenu dropdown">
-										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
-										<ul class="dropdown-menu">
-											<li class="nav-item">
-												<a class="nav-link" href="category.html">Shop Category</a>
-												<li class="nav-item">
-													<a class="nav-link" href="single-product.html">Product Details</a>
-													<li class="nav-item">
-														<a class="nav-link" href="checkout.html">Product Checkout</a>
-														<li class="nav-item">
-															<a class="nav-link" href="cart.html">Shopping Cart</a>
-														</li>
-														<li class="nav-item">
-															<a class="nav-link" href="confirmation.html">Confirmation</a>
-														</li>
-										</ul>
+									<li class="nav-item submenu">
+										<a href="/shop" class="nav-link "  role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
+										
 									</li>
 									<li class="nav-item submenu dropdown">
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Board</a>
@@ -168,7 +155,7 @@
 									<hr>
 
 									<li class="nav-item">
-										<a href="#" class="icons">
+										<a href="/cart" class="icons">
 											<i class="lnr lnr lnr-cart"></i>
 										</a>
 									</li>

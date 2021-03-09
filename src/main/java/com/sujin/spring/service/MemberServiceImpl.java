@@ -60,7 +60,11 @@ public class MemberServiceImpl implements MemberService{
 		
 		return false;
 		
-		
-			
+	}
+
+	//아이디로 회원정보가져오기
+	@Override
+	public Member searchMember(String mb_id) {
+		return memberDAO.searchById(mb_id);
 	}
 }

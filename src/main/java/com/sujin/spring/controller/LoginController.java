@@ -66,10 +66,10 @@ public class LoginController {
     @RequestMapping(value="/commonlogin", method=RequestMethod.POST)
     public String login(Model model, Member member, HttpSession session) {
     	Boolean bl = memberService.login(member);
-    	
     	if( bl == true) {
     		session.setAttribute("sessionId", member.getMb_id());
-    		
+    		Member member1 = memberService.searchMember(member.getMb_id());
+    		session.setAttribute("member", member1);
     		return "redirect:/";
     	}else {
     		model.addAttribute("msg", "비밀번호 다름");

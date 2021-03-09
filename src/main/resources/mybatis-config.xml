@@ -15,6 +15,11 @@
 		<typeAlias alias="Member" type="com.sujin.spring.vo.Member" />
 		<typeAlias alias="Board" type="com.sujin.spring.vo.Board" />
 		<typeAlias alias="Answer" type="com.sujin.spring.vo.Answer" />
+		<typeAlias alias="Orders" type="com.sujin.spring.vo.Orders" />
+		<typeAlias alias="OrderItem" type="com.sujin.spring.vo.OrderItem" />
+		<typeAlias alias="Item" type="com.sujin.spring.vo.Item" />
+		<typeAlias alias="Cartitem" type="com.sujin.spring.vo.Cartitem" />
+		
 <!-- 
 		<typeAlias alias="Book" type="com.bokm.vo.Book" />
 		<typeAlias alias="Member" type="com.bokm.vo.Member" />
