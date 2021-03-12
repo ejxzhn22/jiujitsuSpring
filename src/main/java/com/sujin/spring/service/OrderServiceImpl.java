@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.sujin.spring.dao.OrderDAO;
 import com.sujin.spring.vo.Cartitem;
 import com.sujin.spring.vo.Item;
+import com.sujin.spring.vo.OrderItem;
+import com.sujin.spring.vo.Orders;
 
 @Service
 public class OrderServiceImpl implements OrderService{
@@ -40,7 +42,8 @@ public class OrderServiceImpl implements OrderService{
 	public int updateItem(Item item) {
 		return orderDAO.updateItem(item);
 	}
-
+	
+	
 	//상품 삭제하기
 	@Override
 	public int deleteItem(int item_id) {
@@ -57,5 +60,43 @@ public class OrderServiceImpl implements OrderService{
 	@Override
 	public List<Map> selectCart(int cartitem_member_id) {
 		return orderDAO.selectCart(cartitem_member_id);
+	}
+	
+	//아이템아이디로 장바구니 아이템찾기
+	@Override
+	public Cartitem selectItem(Cartitem cartitem) {
+		return orderDAO.selectItem(cartitem);
+	}
+
+	
+	//장바구니 아이템 수량 업데이트
+	@Override
+	public int updateCount(Cartitem cartitem) {
+		return orderDAO.updateCount(cartitem);
+	}
+
+	//orderItem 생성
+	@Override
+	public int orderItem(OrderItem orderItem) {
+		return orderDAO.orderItem(orderItem);
+	}
+
+	//orders 생성
+	@Override
+	public int orders(Orders orders) {
+		return orderDAO.orders(orders);
+	}
+
+	
+	//orders 다져오기
+	@Override
+	public List<Orders> findOrders() {
+		return orderDAO.findOrders();
+	}
+
+	//장바구니 삭제
+	@Override
+	public int deleteCartitem(int item_id) {
+		return orderDAO.deleteCartitem(item_id);
 	}
 }

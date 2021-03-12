@@ -13,9 +13,30 @@ public class Orders {
 	private int order_id;
 	private String member_id;
 	private String order_date;
-	private int orderItem_id;
+	private String order_addr1;
+	private String order_addr2;
+	private String order_addr3;
 	
 	
+	
+	public String getOrder_addr1() {
+		return order_addr1;
+	}
+	public void setOrder_addr1(String order_addr1) {
+		this.order_addr1 = order_addr1;
+	}
+	public String getOrder_addr2() {
+		return order_addr2;
+	}
+	public void setOrder_addr2(String order_addr2) {
+		this.order_addr2 = order_addr2;
+	}
+	public String getOrder_addr3() {
+		return order_addr3;
+	}
+	public void setOrder_addr3(String order_addr3) {
+		this.order_addr3 = order_addr3;
+	}
 	public int getOrder_id() {
 		return order_id;
 	}
@@ -34,20 +55,14 @@ public class Orders {
 	public void setOrder_date(String order_date) {
 		this.order_date = order_date;
 	}
-	public int getOrderItem_id() {
-		return orderItem_id;
-	}
-	public void setOrderItem_id(int orderItem_id) {
-		this.orderItem_id = orderItem_id;
-	}
 	
 	
 	@Override
 	public String toString() {
-		return "Orders [order_id=" + order_id + ", member_id=" + member_id + ", order_date=" + order_date
-				+ ", orderItem_id=" + orderItem_id + "]";
+		return "Orders [order_id=" + order_id + ", member_id=" + member_id + ", order_date=" + order_date + ", addr1="
+				+ order_addr1 + ", addr2=" + order_addr2 + ", addr3=" + order_addr3 + "]";
 	}
-	
+
 	
 	
 }

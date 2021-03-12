@@ -48,13 +48,49 @@ item_image varchar(500)
 		values (#{cartitem_member_id}, #{cartitem_item_id}, #{cartitem_price}, #{cartitem_count})
 	</insert>
 	
-	<!-- 장바구니 아이템가져오기 -->
+	<!-- 아이디로 장바구니 아이템가져오기 -->
 	<select id="selectCart" parameterType="int" resultType="Map">
-		select cartitem.cartitem_id,cartitem.cartitem_member_id, cartitem.cartitem_price, cartitem.cartitem_count, item.item_name, item.item_image
+		select cartitem.cartitem_id,cartitem.cartitem_member_id, cartitem.cartitem_price, cartitem.cartitem_count,item.item_id, item.item_name, item.item_image
 		from cartitem
 		join item
 		on cartitem.cartitem_item_id = item.item_id
 		where cartitem.cartitem_member_id = #{cartitem_member_id}
 	</select>
+	
+	<!-- 아이템아이디로 장바구니에 아이템찾기 -->
+	<select id="selectItem" parameterType="Cartitem" resultType="Cartitem">
+		select cartitem_item_id, cartitem_price, cartitem_count from cartitem 
+		where cartitem_item_id = #{cartitem_item_id} and cartitem_member_id = #{cartitem_member_id}
+	</select>
+	
+	<!--  -->
+	
+	<!-- 장바구니 아이템 수량 업데이트 -->
+	<update id="updateCount" parameterType="Cartitem">
+		update cartitem set cartitem_count = cartitem_count + #{cartitem_count} where cartitem_item_id =#{cartitem_item_id}
+	</update>
+	
+	<!-- orderItem 생성 -->
+	<insert id="orderItem" parameterType="OrderItem">
+		insert into orderitem(item_id, item_name, order_price, order_count, order_id) values(#{item_id}, #{item_name}, #{order_price}, #{order_count}, #{order_id})
+	</insert>
+	
+	<!-- orders 생성 -->
+	<insert id="orders" parameterType="Orders">
+		insert into orders(member_id, order_date, order_addr1, order_addr2, order_addr3)
+		values(#{member_id}, now(), #{order_addr1},#{order_addr2},#{order_addr3})
+	</insert>
+	
+	<!-- orders 가져오기 -->
+	<select id="findOrders" resultType="Orders">
+		select *from orders order by order_date DESC
+	</select>
+	
+	<!-- 장바구니 삭제 -->
+	<delete id="deleteCartitem">
+		delete from cartitem where cartitem_item_id = #{item_id}
+	</delete>
+	
+
 
 </mapper>
