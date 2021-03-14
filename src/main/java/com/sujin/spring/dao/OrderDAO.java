@@ -51,5 +51,10 @@ public interface OrderDAO {
 	//장바구니 삭제
 	public int deleteCartitem(int item_id);
 	
+	//주문리스트 가져오기
+	public List<Map> findAllOrder();
+	
+	//주문상세 가져오기
+	public List<Map> findOrderDetail(int order_id);
 	
 }

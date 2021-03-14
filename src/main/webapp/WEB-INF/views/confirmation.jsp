@@ -32,75 +32,45 @@
 		<div class="container">
 			<h3 class="title_confirmation">Thank you. Your order has been received.</h3>
 			<div class="row order_d_inner">
-				<div class="col-lg-4">
+				<div class="col-lg-6">
 					<div class="details_item">
 						<h4>Order Info</h4>
 						<ul class="list">
 							<li>
 								<a href="#">
-									<span>Order number</span> : 60235</a>
+		
+									<span>Order number</span> : ${list[0].order_id} </a>
 							</li>
 							<li>
 								<a href="#">
-									<span>Date</span> : Los Angeles</a>
+									<span>Date</span> : ${list[0].order_date }</a>
 							</li>
-							<li>
-								<a href="#">
-									<span>Total</span> : USD 2210</a>
-							</li>
-							<li>
-								<a href="#">
-									<span>Payment method</span> : Check payments</a>
-							</li>
+							
+							
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-6">
 					<div class="details_item">
-						<h4>Billing Address</h4>
+						<h4>Address</h4>
 						<ul class="list">
 							<li>
 								<a href="#">
-									<span>Street</span> : 56/8</a>
+									<span>우편번호</span> : ${list[0].order_addr1 }</a>
 							</li>
 							<li>
 								<a href="#">
-									<span>City</span> : Los Angeles</a>
+									<span>주소</span> : ${list[0].order_addr2 }</a>
 							</li>
+							
 							<li>
 								<a href="#">
-									<span>Country</span> : United States</a>
-							</li>
-							<li>
-								<a href="#">
-									<span>Postcode </span> : 36952</a>
+									<span>상세주소 </span> : ${list[0].order_addr3 }</a>
 							</li>
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-4">
-					<div class="details_item">
-						<h4>Shipping Address</h4>
-						<ul class="list">
-							<li>
-								<a href="#">
-									<span>Street</span> : 56/8</a>
-							</li>
-							<li>
-								<a href="#">
-									<span>City</span> : Los Angeles</a>
-							</li>
-							<li>
-								<a href="#">
-									<span>Country</span> : United States</a>
-							</li>
-							<li>
-								<a href="#">
-									<span>Postcode </span> : 36952</a>
-							</li>
-						</ul>
-					</div>
-				</div>
+				
 			</div>
 			<div class="order_details_table">
 				<h2>Order Details</h2>
@@ -114,70 +84,31 @@
 							</tr>
 						</thead>
 						<tbody>
+						<c:set var="sum" value="0"/>
+						<c:forEach var="item" items="${list}">
 							<tr>
 								<td>
-									<p>Pixelstore fresh Blackberry</p>
+									<p>${item.item_name }</p>
 								</td>
 								<td>
-									<h5>x 02</h5>
+									<h5>${item.order_count }</h5>
 								</td>
 								<td>
-									<p>$720.00</p>
+									<p> &#8361; ${item.order_price * item.order_count }</p>
 								</td>
 							</tr>
+					
+								<c:set var= "sum" value="${sum + item.order_price * item.order_count}"/>
+							
+							</c:forEach>
 							<tr>
+							
 								<td>
-									<p>Pixelstore fresh Blackberry</p>
 								</td>
 								<td>
-									<h5>x 02</h5>
 								</td>
 								<td>
-									<p>$720.00</p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<p>Pixelstore fresh Blackberry</p>
-								</td>
-								<td>
-									<h5>x 02</h5>
-								</td>
-								<td>
-									<p>$720.00</p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h4>Subtotal</h4>
-								</td>
-								<td>
-									<h5></h5>
-								</td>
-								<td>
-									<p>$2160.00</p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h4>Shipping</h4>
-								</td>
-								<td>
-									<h5></h5>
-								</td>
-								<td>
-									<p>Flat rate: $50.00</p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<h4>Total</h4>
-								</td>
-								<td>
-									<h5></h5>
-								</td>
-								<td>
-									<p>$2210.00</p>
+									<p> &#8361; <c:out value="${sum }"/></p>
 								</td>
 							</tr>
 						</tbody>

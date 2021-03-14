@@ -11,7 +11,7 @@ package com.sujin.spring.vo;
 public class Orders {
 	
 	private int order_id;
-	private String member_id;
+	private int member_id;
 	private String order_date;
 	private String order_addr1;
 	private String order_addr2;
@@ -43,10 +43,10 @@ public class Orders {
 	public void setOrder_id(int order_id) {
 		this.order_id = order_id;
 	}
-	public String getMember_id() {
+	public int getMember_id() {
 		return member_id;
 	}
-	public void setMember_id(String member_id) {
+	public void setMember_id(int member_id) {
 		this.member_id = member_id;
 	}
 	public String getOrder_date() {

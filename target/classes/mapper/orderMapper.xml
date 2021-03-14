@@ -91,6 +91,23 @@ item_image varchar(500)
 		delete from cartitem where cartitem_item_id = #{item_id}
 	</delete>
 	
+	<!-- 주문내역 상세 가져오기 -->
+	<select id="findOrderDetail" parameterType="int" resultType="Map">
+		select orderitem.item_name, orderitem.order_price, orderitem.order_count, orders.order_id, orders.order_date, orders.order_addr1,orders.order_addr2,orders.order_addr3
+		from orderitem
+		join orders
+		on orderitem.order_id = orders.order_id
+		where orders.order_id = #{order_id}
+	</select>
+	
+	<!-- 주문내역 상세 전부 가져오기 -->
+	<select id="findAllOrder" resultType="Map">
+		select orderitem.order_price, orderitem.order_count, orders.order_id, orders.order_date
+		from orderitem
+		join orders
+		on orderitem.order_id = orders.order_id
+		order by orders.order_date DESC
+	</select>
 
 
 </mapper>

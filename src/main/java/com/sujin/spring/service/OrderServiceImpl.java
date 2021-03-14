@@ -99,4 +99,16 @@ public class OrderServiceImpl implements OrderService{
 	public int deleteCartitem(int item_id) {
 		return orderDAO.deleteCartitem(item_id);
 	}
+
+	//주문리스트 가져오기
+	@Override
+	public List<Map> findAllOrder() {
+		return orderDAO.findAllOrder();
+	}
+
+	//주문상세 가져오기
+	@Override
+	public List<Map> findOrderDetail(int order_id) {
+		return orderDAO.findOrderDetail(order_id);
+	}
 }

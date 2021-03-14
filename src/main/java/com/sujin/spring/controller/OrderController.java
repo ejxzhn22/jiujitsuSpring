@@ -2,6 +2,7 @@ package com.sujin.spring.controller;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -232,7 +233,7 @@ public class OrderController {
 		orders.setOrder_addr2(addr2);
 		orders.setOrder_addr3(addr3);
 		
-		orders.setMember_id(member.getMb_id());
+		orders.setMember_id(member.getMb_no());
 		
 		orderService.orders(orders);
 		
@@ -255,13 +256,39 @@ public class OrderController {
 		}
 
 		
-		return "confirmation";
+		return "orderList";
 	}
 	
 	
-	//주문 내역 페이지
+	//주문 상세 페이지
 	@RequestMapping(value="/confirmation", method=RequestMethod.GET)
-	public String confirmation() {
+	public String confirmation(Model model, @RequestParam("order_id") int order_id) {
+		
+		List<Map> list = orderService.findOrderDetail(order_id);
+		
+		model.addAttribute("list", list);
+		
 		return "confirmation";
+	}
+	
+	//주문내역 페이지
+	@RequestMapping(value="/orderList", method=RequestMethod.GET)
+	public String orderLsit(Model model) {
+		
+		List<Map> orderlist = orderService.findAllOrder();
+
+		int order_id=0;
+		for(int i=0; i<orderlist.size(); i++) {
+			int tmp = (Integer)orderlist.get(i).get("order_id");
+			System.out.println("tmp: "+ tmp);
+			if(order_id == tmp) {
+				orderlist.remove(i);
+			}
+			order_id = tmp;
+		}
+		
+		model.addAttribute("list", orderlist);
+		
+		return "orderList";
 	}
 }

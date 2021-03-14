@@ -101,6 +101,18 @@ public class OrderDAOImpl implements OrderDAO{
 	public int deleteCartitem(int item_id) {
 		return sqlSession.delete(namespace+".deleteCartitem", item_id);
 	}
+
+	//주문리스트 가져오기
+	@Override
+	public List<Map> findAllOrder() {
+		return sqlSession.selectList(namespace+".findAllOrder");
+	}
+
+	//주문상세 가져오기
+	@Override
+	public List<Map> findOrderDetail(int order_id) {
+		return sqlSession.selectList(namespace+".findOrderDetail", order_id);
+	}
 	
 	
 }

@@ -59,7 +59,7 @@
 						</li>
 						
 						<li>
-							<a href="/confirmation">
+							<a href="/orderList">
 								주문내역
 							</a>
 						</li>
