@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class KakaoLoginApi {
 	
 
-    private final static String K_CLIENT_ID = "7a38b102524423210941dfc52f6060e1";
+    private final static String K_CLIENT_ID = "";
     private final static String K_REDIRECT_URI = "http://localhost:8888/kakaologin";
 
     public String getAuthorizationUrl(HttpSession session) {
